@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+before_install: 
+  - docker build -t frontend/docker-travis-test -f Dockerfile
+
+script: 
+  - docker run frontend/docker-travis-test npm run test -- --coverage
+
